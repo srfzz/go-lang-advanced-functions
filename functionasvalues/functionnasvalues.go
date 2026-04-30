@@ -4,12 +4,8 @@ import "fmt"
 
 func main() {
 	numbers := []int{1, 5, 6, 7, 9}
-	doubles := tranformNumbers(&numbers, func(number int) int {
-		return number * 2
-	})
-	triple := tranformNumbers(&numbers, func(number int) int {
-		return number * 3
-	})
+	doubles := tranformNumbers(&numbers, double)
+	triple := tranformNumbers(&numbers, triple)
 	fmt.Println(doubles)
 	fmt.Println(triple)
 }
@@ -20,4 +16,12 @@ func tranformNumbers(numbers *[]int, transform func(int) int) []int {
 		dNumbers = append(dNumbers, transform(value))
 	}
 	return dNumbers
+}
+
+func double(num int) int {
+	return num * 2
+}
+
+func triple(num int) int {
+	return num * 3
 }
